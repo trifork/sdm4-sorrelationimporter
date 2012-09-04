@@ -4,11 +4,54 @@
     <parent>
         <groupId>dk.nsi.stamdata4</groupId>
         <artifactId>sdm-parent</artifactId>
-        <version>4.1-SNAPSHOT</version>
+        <version>4.1</version>
     </parent>
 
     <artifactId>sorrelationimporter</artifactId>
     <packaging>war</packaging>
+	<version>4.1-SNAPSHOT</version>
+
+    <scm>
+        <url>scm:git:git@github.com:trifork/sdm4-sorrelationimporter</url>
+        <connection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</connection>
+        <developerConnection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://jira.trifork.com/</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://ci02.trifork.com:8443/view/SDM4/job/SDM4-sorrelationimporter/</url>
+    </ciManagement>
+
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+
+    <distributionManagement>
+        <repository>
+            <id>Trifork-Nexus-Release-Repository</id>
+            <name>Trifork Nexus Release Repository</name>
+            <url>https://nexus.trifork.com/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>Trifork-Nexus-Public-Repository</id>
+            <name>Trifork Nexus Public Repository</name>
+            <url>https://nexus.trifork.com/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Trifork-Nexus-Public-Repository</id>
+            <name>Trifork Nexus Public Repository</name>
+            <url>https://nexus.trifork.com/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <properties>
         <generated.sources.dir>${project.build.directory}/generated-sources/</generated.sources.dir>
@@ -67,7 +110,7 @@
         <dependency>
             <groupId>dk.nsi.stamdata4</groupId>
             <artifactId>testutils</artifactId>
-            <version>4.1-SNAPSHOT</version>
+            <version>4.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
