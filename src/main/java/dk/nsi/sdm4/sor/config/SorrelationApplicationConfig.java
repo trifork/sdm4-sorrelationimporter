@@ -13,9 +13,4 @@ public class SorrelationApplicationConfig {
 	public Parser parser() {
 		return new SorRelationParser();
 	}
-
-	@Bean
-	public RecordPersister persister() {
-		return new RecordPersister(Instant.now());
-	}
 }
