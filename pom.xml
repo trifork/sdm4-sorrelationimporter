@@ -9,13 +9,14 @@
 
     <artifactId>sorrelationimporter</artifactId>
     <packaging>war</packaging>
-	<version>4.1-SNAPSHOT</version>
+	<version>4.1</version>
 
     <scm>
         <url>scm:git:git@github.com:trifork/sdm4-sorrelationimporter</url>
         <connection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</connection>
         <developerConnection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</developerConnection>
-    </scm>
+      <tag>sorrelationimporter-4.1</tag>
+  </scm>
     <issueManagement>
         <system>JIRA</system>
         <url>https://jira.trifork.com/</url>
