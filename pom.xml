@@ -9,13 +9,13 @@
 
     <artifactId>sorrelationimporter</artifactId>
     <packaging>war</packaging>
-	<version>4.2-SNAPSHOT</version>
+	<version>4.2</version>
 
     <scm>
         <url>scm:git:git@github.com:trifork/sdm4-sorrelationimporter</url>
         <connection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</connection>
         <developerConnection>scm:git:git@github.com:trifork/sdm4-sorrelationimporter.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>sorrelationimporter-4.2</tag>
   </scm>
     <issueManagement>
         <system>JIRA</system>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>dk.nsi.stamdata4</groupId>
             <artifactId>sdm-core</artifactId>
-            <version>4.2-SNAPSHOT</version>
+            <version>4.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
