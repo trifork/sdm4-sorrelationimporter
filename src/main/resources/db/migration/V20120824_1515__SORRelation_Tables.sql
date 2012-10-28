@@ -1,6 +1,6 @@
 -- SOR - search optimized
 --
-CREATE TABLE `SORRelationer` (
+ CREATE TABLE IF NOT EXISTS `SORRelationer` (
    SORRelationerPID BIGINT(20) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 
   `sor_parent` VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `SORRelationer` (
 
 -- SOR - search optimized
 --
-CREATE TABLE `SORYderSHAKRelationer` (
+ CREATE TABLE IF NOT EXISTS `SORYderSHAKRelationer` (
    SORYderSHAKRelationerPID BIGINT(20) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 
   `shak_yder` VARCHAR(100) NOT NULL,
