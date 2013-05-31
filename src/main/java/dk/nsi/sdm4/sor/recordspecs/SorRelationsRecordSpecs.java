@@ -36,13 +36,13 @@ public final class SorRelationsRecordSpecs
     protected SorRelationsRecordSpecs() {}
     
     public static final RecordSpecification RELATIONS_RECORD_SPEC = RecordSpecification.createSpecification("SORRelationer", "SORRelationerPID",
-            field("sor_parent", 100),
-            field("sor_child", 100)
+            field("sor_parent", 100, true),
+            field("sor_child", 100, true)
     );
 
     public static final RecordSpecification SHAK_YDER_RECORD_SPEC = RecordSpecification.createSpecification("SORYderSHAKRelationer", "SORYderSHAKRelationerPID", 
-            field("shak_yder", 100),
-            field("sor", 100)
+            field("shak_yder", 100, true),
+            field("sor", 100, true)
     );
 
 }

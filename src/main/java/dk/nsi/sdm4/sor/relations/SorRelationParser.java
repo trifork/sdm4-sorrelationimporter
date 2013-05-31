@@ -77,16 +77,22 @@ public class SorRelationParser implements Parser {
     }
     
     @Override
-    public void process(File dataSet) throws ParserException {
-        SLALogItem slaLogItem = slaLogger.createLogItem("SorRelationParser", "dataSet");
+    public void process(File dataSet, String identifier) throws ParserException {
+        SLALogItem slaLogItem = slaLogger.createLogItem(getHome()+".process", "SDM4."+getHome()+".process");
+        slaLogItem.setMessageId(identifier);
+        if (dataSet != null) {
+            slaLogItem.addCallParameter(Parser.SLA_INPUT_NAME, dataSet.getAbsolutePath());
+        }
         try {
+            persister.resetTransactionTime();
             logger.debug("Starting SOR NPI relation parser");
             File files = checkRequiredFiles(dataSet);
             
             truncateTables();
             List<InstitutionOwnerEntityType> list = unmarshallFile(files);
-            processSorTree(list);
-            
+            long processed = processSorTree(list);
+
+            slaLogItem.addCallParameter(Parser.SLA_RECORDS_PROCESSED_MAME, ""+processed);
             slaLogItem.setCallResultOk();
             slaLogItem.store();
         } catch (Exception e) {
@@ -112,7 +118,8 @@ public class SorRelationParser implements Parser {
 		return "sorrelationimporter";
 	}
 
-	void processSorTree(List<InstitutionOwnerEntityType> list) throws SQLException {
+	long processSorTree(List<InstitutionOwnerEntityType> list) throws SQLException {
+        long processed = 0;
         try {
             selfRelationsMap = new HashMap<String, String>();
             shakYderMap = new HashMap<String, HashSet<String>>();
@@ -120,24 +127,28 @@ public class SorRelationParser implements Parser {
 
             for (InstitutionOwnerEntityType institutions : list) {
                 persistInstitutionRelations(institutions, persister);
+                processed++;
             }
             
             // persist institutions relations with self
             Set<String> keys = selfRelationsMap.keySet();
             for (String sorSelfRelationId : keys) {
                 persistNode(sorSelfRelationId, sorSelfRelationId, persister);
+                processed++;
             }
             
             // persist collected shak/yder numbers
             Set<String> syKeys = shakYderMap.keySet();
             for (String shakYderKey : syKeys) {
                 persistShakYder(shakYderKey, shakYderMap.get(shakYderKey), persister);
+                processed++;
             }
         } finally {
             selfRelationsMap = null;
             shakYderMap = null;
             parentChildIds = null;
         }
+        return processed;
     }
 
     private void persistInstitutionRelations(InstitutionOwnerEntityType institution, RecordPersister persister) throws SQLException {

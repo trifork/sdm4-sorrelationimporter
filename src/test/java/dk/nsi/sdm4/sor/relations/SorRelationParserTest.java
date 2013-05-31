@@ -101,11 +101,11 @@ public class SorRelationParserTest {
 
         File file = FileUtils.toFile(getClass().getClassLoader().getResource("data/sor/ONE_SYGEHUS.xml"));
         
-        parser.process(file);
+        parser.process(file, "");
         assertEquals(10, jdbcTemplate.queryForInt("SELECT Count(*) FROM " + recordSpecification.getTable()));
         
         //run again and see data is the same
-        parser.process(file);
+        parser.process(file, "");
         assertEquals(10, jdbcTemplate.queryForInt("SELECT Count(*) FROM " + recordSpecification.getTable()));
         
     }
@@ -115,7 +115,7 @@ public class SorRelationParserTest {
     public void testParseFile() throws Exception {
         File file = FileUtils.toFile(getClass().getClassLoader().getResource("data/sor/SOR_FULL.xml"));
 
-        parser.process(file);
+        parser.process(file, "");
 
 	    assertEquals(22, jdbcTemplate.queryForInt("SELECT Count(*) FROM " + recordSpecification.getTable() + " WHERE sor_parent = '21000016006'"));
         assertEquals("278591000016002", jdbcTemplate.queryForObject("SELECT sor FROM " + shakYderSpecification.getTable() + " WHERE shak_yder = 'SHAK=804301'", String.class));
