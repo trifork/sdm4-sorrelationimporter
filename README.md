@@ -1,11 +1,6 @@
-# SDM4 importer til SOR-relationer
-
-## Igang
-sorrelationimporteren er af typen der bruger en RecordPersister
-Læs stamdata dokumentation der ligger i SDM-Core projektet inden dette projekt bygges.
-Se https://github.com/trifork/sdm4-core/tree/sdm-core-4.1/doc
-
-For at køre integrationstests, kræves en opsætning som beskrevet i guide til udviklere
-
-Klon repo med ```git clone https://github.com/trifork/sdm4-sorrelationimporter.git```.
-
+FLYTTET
+=========
+Dette repository er flyttet til https://svn.nspop.dk/svn/trifork/sdm4-sorrelationimporter/trunk/  
+Adgang kan f√•es igennem https://www.nspop.dk support  
+  
+Public read-only her https://fisheye.nspop.dk/browse/public/components/sdm4-sorrelationimporter  
